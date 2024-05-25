@@ -1,11 +1,23 @@
 const mongoose = require('mongoose');
+const config = require('config');
+
+const dbgr = require('debug')("dev:mongoose");
+
+//console.log("Loaded Configuration:", config);
+
+const mongoURI = config.get("MONGODB_URI");
+dbgr("MONGODB_URI:", mongoURI);
 
 mongoose
-.connect("mongodb://127.0.0.1:27017/myshopapp")
+.connect(`${mongoURI}/myshopapp`, {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true,
+})
 .then(function(){
-    console.log("connected..");
+    dbgr("connected..");
 })
 .catch(function(err){
-    console.log(err);
-})
+    dbgr(err);
+});
+
 module.exports = mongoose.connection;
