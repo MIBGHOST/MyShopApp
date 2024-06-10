@@ -1,3 +1,3 @@
 {
-    "MONGODB_URI": "mongodb://127.0.0.1:27017"
+    "MONGODB_URI": "mongodb+srv://myshopapp:myshopapp@cluster0.kfmzh3s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 }

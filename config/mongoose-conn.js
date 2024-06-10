@@ -12,6 +12,7 @@ mongoose
 .connect(`${mongoURI}/myshopapp`, {
 //    useNewUrlParser: true,
 //    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 10000,
 })
 .then(function(){
     dbgr("connected..");

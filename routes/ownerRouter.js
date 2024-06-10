@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../models/owner-model');
+const productsRouter = require("./productsRouter");
 
 if (process.env.NODE_ENV === "development") {
     router.post("/create", async function(req, res){
@@ -20,11 +21,16 @@ if (process.env.NODE_ENV === "development") {
         res.status(201)
         .send(createdOwner);
     });
-
+}
 router.get("/", function(req, res){
     res.send("hello mibghost");
 });
 
-}
+router.get("/admin", function(req, res){
+    let success = req.flash("success");
+    res.render("createproducts", { success });
+});
+
+router.use("/products", productsRouter);
 
 module.exports = router;
